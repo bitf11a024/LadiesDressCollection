@@ -1,0 +1,55 @@
+﻿@model List<EADWebProject.Models.Product>
+@{
+        HttpCookie cookie = Request.Cookies["login"];
+        string value = Server.HtmlEncode(cookie.Value);   
+}
+<input type="hidden" id="one" value="@value"  />
+<script>
+    var temp = $('#one').val();
+    //alert(temp);
+    if (temp == "True") {
+        
+        $('#login').hide();
+    }
+</script>
+    <div class="span9"  >
+        <ul class="thumbnails">
+            @if(Model != null)
+            {
+                foreach(var r in Model)
+                {
+            <li class="span3">
+                <div class="thumbnail">
+                    <img src="~/Files/@r.Pictures" alt="Sample Image" style="height:200px;width:200px;">
+                    <div class="caption">
+                        <h4>@r.Tittle</h4>
+                        <table>
+                            <tr>
+                                <td>
+                         @using (Html.BeginForm("Details", "Home", FormMethod.Post))
+                         {
+                             @Html.Hidden("tittle",@r.Tittle);
+                            <button type="submit" class="btn btn-info"> Details</button>
+                         }  </td>
+                                <td>
+                         @using (Html.BeginForm("Showpictures", "Home", FormMethod.Post))
+                         {
+                             @Html.Hidden("tittle", @r.Tittle);
+                             <button type="submit" class="btn  btn-info">Pictures</button>
+                         }
+                                    </td>
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+            </li>
+            }
+            }
+            
+            
+        </ul>
+
+
+    </div>
+  
+   

@@ -1,0 +1,46 @@
+﻿@model List<EADWebProject.Models.Temp>
+ 
+    <div class="span3" >
+        
+    </div>   
+        
+    <div class="span6">
+            <h2>Shopping Details</h2>
+            <div class="bs-example">
+    <table class="table table-striped">
+        <thead>
+            <tr> <th>Product</th> 
+            <th> Quantity</th> 
+             <th>Price</th> </tr>
+        </thead>
+        
+        <tbody>
+            @foreach(var record in Model){
+            <tr>
+                <td>@record.Tittle</td>
+                <td>@record.Quantity</td>
+                <td>@record.Price</td>    
+            </tr>
+            }
+             @using(Html.BeginForm("saveData","Home",FormMethod.Post)){
+            <tr>
+               
+                <td>
+                    <input type="image"
+                src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif"
+                border="0" name="submit" alt="">
+                </td>
+                
+            </tr>
+           }
+        </tbody>
+    </table>
+                
+</div>
+        
+
+        </div>
+
+   
+  
+   
