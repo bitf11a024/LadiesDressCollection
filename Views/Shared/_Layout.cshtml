@@ -55,6 +55,7 @@
                 <li>@Html.ActionLink("About","About","Home")</li>
                 <li>@Html.ActionLink("Contact","Contact","Home")</li>
                 <li>@Html.ActionLink("Search","Search","Search")</li>
+               
             </ul>
             <div style="padding-right:30px">
                 @if (Session["name"] == null)
@@ -141,7 +142,7 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
    <footer class="nav navbar-fixed-bottom" style="background-color:#dbdbd5">
-       COPYRIGHT &copy; No One
+       COPYRIGHT &copy; Reserved for Huda
    </footer>
 </body>
 </html>
