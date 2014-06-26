@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+    Layout = "~/Views/Admin/Menu.cshtml";
+}
+
+    <div class="span3">
+
+    </div>
+    <div class="well span9" >
+        <h1>Admin Panal: See all the items here:</h1>
+         @using (Html.BeginForm("editProduct", "Admin", FormMethod.Post))
+         {  
+        <table class="table">
+            <tr>
+                 
+                <td> Category</td>
+
+                <td><select style="width:100%" id="category" name="Category">
+                        <option> Lawns </option>
+                        <option> T-Shirts </option>
+                        <option> Jeans </option>
+                        <option> Tops </option>
+                        <option> Shalwar Kameez </option>
+                        <option> Trousers </option>
+                        <option> Sweaters </option>
+                        <option> Others </option>
+            </select></td>
+                
+            </tr>
+            <tr><td>Tittle</td><td>
+                <select style="width:100%" id="tittle" name="Tittle" >
+           
+            <script>
+                $(document).ready(function () {
+                   
+
+                        $.getJSON("../Product/getallproducts?category=" + category, function (data) {
+
+                            $.each(data, function (i, item) {
+
+                                $('#tittle').append('<option >' + item.Tittle + '</option>');
+                                $('#tittle').append('<option >' + item.category + '</option>');
+                                
+
+                            });
+
+                        });
+                    });
+                
+                
+                </script>
+                </select></td></tr>
+          </table>

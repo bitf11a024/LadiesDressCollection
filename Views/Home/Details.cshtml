@@ -1,0 +1,59 @@
+﻿@model EADWebProject.Models.Product
+
+<script>
+    @{
+        HttpCookie cookie = Request.Cookies["login"];
+        string value = Server.HtmlEncode(cookie.Value);   
+    }
+    
+</script>
+    <div class="span6">
+        <table>
+        <tr><td><h4>Tittle</h4></td><td><h4>:  @Model.Tittle</h4></td></tr>
+        <tr><td><h4>Company</h4></td><td><h4>:  @Model.Company</h4></td></tr>
+        <tr><td><h4>Price</h4></td><td><h4>:  @Model.Price</h4></td></tr>    
+        </table>
+        <input type="hidden" id="check1" value="@value" />
+    </div>
+    <div class="span9">
+        <a href="#" class="thumbnail">
+                    <img src="~/Files/@Model.Pictures" alt="125x125" width="300" height="300">
+         </a>
+        <h3>Place Order</h3>
+        @using (Html.BeginForm("Showcart", "Cart", FormMethod.Post))
+        {
+        @Html.Hidden("tittle",@Model.Tittle)
+        <h4>Quantity</h4>
+        <input type=text name="quantity" id="q1" /><br><button class="btn  btn-info" type="submit" onclick="return check_login(this)" >Add To Cart</button>
+        
+        }
+        <div id="d1" style="color:red"></div>
+        <br><br>
+        
+
+    </div>
+    
+<script>
+    function check_login(){
+        var login = document.getElementById('check1').value;
+        var quantity = document.getElementById('q1').value;
+        if (login == "False")
+        {
+            $('#d1').append('<p>*you must have to login.</p>');
+            return false;
+            
+        }
+        else
+        {
+            if (quantity.length > 0) {
+                return true;
+            }
+            else {
+                $('#d1').append('<p>*Field never be empty.</p>');
+                return false;
+            }
+            
+        }
+    }
+</script>
+ 
