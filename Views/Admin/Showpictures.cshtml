@@ -12,53 +12,53 @@
         $('#login').hide();
     }
 </script>
-<div class="span9"  >
-    @using (Html.BeginForm("Additem", "Admin", FormMethod.Post))
-    {
-        <button type="submit" class="btn btn-info"> Add Item</button>
-    }
-    
-    <ul class="thumbnails">
-        @if(Model != null)
-        {
-               
-            foreach(var r in Model)
+    <div class="span9"  >
+        <ul class="thumbnails">
+            @if(Model != null)
             {
-                  
-                <li class="span3">
-                    <div class="thumbnail">
-                        <img src="~/Files/@r.Pictures" alt="Sample Image" style="height:200px;width:200px;">
-                        <div class="caption">
+               
+                foreach(var r in Model)
+                {
+                     
+            <li class="span3">
+                <div class="thumbnail">
+                    <img src="~/Files/@r.Pictures" alt="Sample Image" style="height:200px;width:200px;">
+                    <div class="caption">
                          
-                            <h4>@r.Tittle</h4>
-                            <table>
-                                <tr>
-                                    
-                                    <td>
-                                        @using (Html.BeginForm("Deleteitem", "Admin", FormMethod.Post))
-                                        {
-                                            @Html.Hidden("tittle",@r.Tittle);
-                                            <button type="submit" class="btn btn-info"> Delete Item</button>
-                                        }  </td>
-                                    <td>
-                                        @using (Html.BeginForm("Edititem", "Admin", FormMethod.Post))
-                                        {
-                                            @Html.Hidden("tittle", @r.Tittle);
-                                            <button type="submit" class="btn  btn-info">Edit Item</button>
-                                        }
+                        <h4>@r.Tittle</h4>
+                        <table>
+                            <tr>
+                                <td>
+                         @using (Html.BeginForm("Additem", "Admin", FormMethod.Post))
+                         {
+                             @Html.Hidden("tittle",@r.Tittle);
+                            <button type="submit" class="btn btn-info"> Add Item</button>
+                         }  </td>
+                                 <td>
+                         @using (Html.BeginForm("Deleteitem", "Admin", FormMethod.Post))
+                         {
+                             @Html.Hidden("tittle",@r.Tittle);
+                            <button type="submit" class="btn btn-info"> Delete Item</button>
+                         }  </td>
+                                <td>
+                         @using (Html.BeginForm("Edititem", "Admin", FormMethod.Post))
+                         {
+                             @Html.Hidden("tittle", @r.Tittle);
+                             <button type="submit" class="btn  btn-info">Edit Item</button>
+                         }
                                     </td>
                                 </tr>
                             </table>
-                        </div>
                     </div>
-                </li>
+                </div>
+            </li>
             }
-        }
+            }
             
             
-    </ul>
+        </ul>
 
 
-</div>
+    </div>
   
    
